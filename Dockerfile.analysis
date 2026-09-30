@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir \
     statsmodels \
     sqlalchemy \
     psycopg2-binary \
-    python-dotenv
+    python-dotenv \
+    streamlit
 
 WORKDIR /app

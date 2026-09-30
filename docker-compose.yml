@@ -26,5 +26,21 @@ services:
     depends_on:
       - postgres
 
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.analysis
+    container_name: abtest_dashboard
+    restart: always
+    volumes:
+      - ./dashboard:/app/dashboard
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    ports:
+      - "8502:8501"
+    command: streamlit run dashboard/app.py --server.port=8501 --server.address=0.0.0.0
+
 volumes:
   pg_data:
